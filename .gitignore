@@ -1,0 +1,22 @@
+# 构建产物（由 build.ps1 / gen 生成）
+build/
+dist/*.pdb
+dist/*.xml
+
+# 图标预览图（IconGen 每次都会重新生成）
+icon-preview.png
+
+# 运行时/诊断产物
+*.log
+*.tmp
+*.bak
+dist/Probe.exe
+dist/HotkeyControl.exe
+
+# 系统与编辑器
+Thumbs.db
+desktop.ini
+.vs/
+.idea/
+*.user
+*.suo
