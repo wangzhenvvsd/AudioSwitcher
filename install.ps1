@@ -1,15 +1,26 @@
 # Install AudioSwitcher for the current user (no admin rights needed).
 # NOTE: keep ASCII-only for Windows PowerShell 5.1.
 param(
-    [string]$Source = (Join-Path $PSScriptRoot 'dist\AudioSwitcher.exe'),
+    [string]$Source,
     [switch]$NoDesktopShortcut,
     [switch]$StartWithWindows
 )
 
 $ErrorActionPreference = 'Stop'
 
-if (-not (Test-Path $Source)) {
-    throw "not found: $Source - run build.ps1 first"
+# 支持两种摆放方式：解压出来的安装包（exe 与脚本同目录）或源码仓库（dist\ 下）
+if (-not $Source) {
+    $candidates = @(
+        (Join-Path $PSScriptRoot 'AudioSwitcher.exe'),
+        (Join-Path $PSScriptRoot 'dist\AudioSwitcher.exe')
+    )
+    foreach ($candidate in $candidates) {
+        if (Test-Path $candidate) { $Source = $candidate; break }
+    }
+}
+
+if (-not $Source -or -not (Test-Path $Source)) {
+    throw "AudioSwitcher.exe not found next to this script - run build.ps1 first, or extract the release zip fully"
 }
 
 $running = Get-Process AudioSwitcher -ErrorAction SilentlyContinue

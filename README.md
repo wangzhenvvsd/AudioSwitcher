@@ -11,6 +11,13 @@ Windows 11 上一键切换「扬声器输出 + 麦克风输入」组合的小工
 
 ![设置界面](docs/settings.png)
 
+## 下载
+
+到 [Releases](https://github.com/wangzhenvvsd/AudioSwitcher/releases) 下载 **`AudioSwitcher.exe`**：
+
+- **单文件绿色版**（约 76 KB）：下载后双击即用。不需要安装、不需要管理员权限、不需要额外运行库，也不写任何系统目录；配置与日志只在 `%APPDATA%\AudioSwitcher` 下。
+- 想装到固定位置（开始菜单/桌面快捷方式、可选开机自启）：clone 本仓库后运行 `install.ps1`，会装到 `%LOCALAPPDATA%\Programs\AudioSwitcher`。
+
 ## 快速开始
 
 直接双击运行：
